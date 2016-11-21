@@ -6,8 +6,10 @@
 package com.spring;
 
 import com.model.emp.Employee;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,10 +28,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HelloController {
     @InitBinder
-    public void myInitbinder(WebDataBinder binder){
+    public void myInitbinder(WebDataBinder binder) throws ParseException{
         binder.setDisallowedFields(new String[]{"emplMobile"});
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         binder.registerCustomEditor(Date.class, "empDob", new CustomDateEditor(sdf, false));
+        binder.registerCustomEditor(String.class, "ename",new EmployeeNameEditor());
     }
     
     @RequestMapping(value="/")

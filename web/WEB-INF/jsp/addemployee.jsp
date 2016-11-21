@@ -22,7 +22,7 @@
                     <td><input type="text" name="ename"/></td>
                 </tr>
                 <tr> 
-                    <td><label>Employee addresss</label></td>
+                    <td><label>Employee address</label></td>
                     <td><input type="text" name="eaddress"/></td>
                 </tr>
                 <tr> 
