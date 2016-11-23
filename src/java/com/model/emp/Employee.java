@@ -5,18 +5,21 @@
  */
 package com.model.emp;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.Date;
 import java.util.List;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author shadowman
  */
 public class Employee {
-    String ename;
-    String eaddress;
+
+    @Size(min = 3, max = 10)
+    private String ename;
+    private String eaddress;
+
     private Long emplMobile;
     private Date empDob;
     private List<String> skillList;
@@ -29,7 +32,6 @@ public class Employee {
     public void setSkillList(List<String> skillList) {
         this.skillList = skillList;
     }
-    
 
     public Department getDepartment() {
         return department;
@@ -38,7 +40,6 @@ public class Employee {
     public void setDepartment(Department department) {
         this.department = department;
     }
-    
 
     public Date getEmpDob() {
         return empDob;
@@ -55,13 +56,6 @@ public class Employee {
     public void setEmplMobile(Long emplMobile) {
         this.emplMobile = emplMobile;
     }
-    
-    
-
-    
-
-   
-    
 
     public String getEname() {
         return ename;
@@ -78,6 +72,5 @@ public class Employee {
     public void setEaddress(String eaddress) {
         this.eaddress = eaddress;
     }
-   
-    
+
 }

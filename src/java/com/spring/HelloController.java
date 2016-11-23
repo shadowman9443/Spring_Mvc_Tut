@@ -9,7 +9,8 @@ import com.model.emp.Employee;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+
+import javax.validation.Valid;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  *
@@ -29,10 +30,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HelloController {
     @InitBinder
     public void myInitbinder(WebDataBinder binder) throws ParseException{
-        binder.setDisallowedFields(new String[]{"emplMobile"});
+       // binder.setDisallowedFields(new String[]{"emplMobile"});
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         binder.registerCustomEditor(Date.class, "empDob", new CustomDateEditor(sdf, false));
-        binder.registerCustomEditor(String.class, "ename",new EmployeeNameEditor());
+       // binder.registerCustomEditor(String.class, "ename",new EmployeeNameEditor());
     }
     
     @RequestMapping(value="/")
@@ -48,7 +49,7 @@ public class HelloController {
     }
     @RequestMapping(value="/add",method=RequestMethod.POST)
     public String addEmployee(ModelMap mMap,/*@RequestParam("ename") String ename,@RequestParam("eaddress") String eaddress*/
-            @ModelAttribute("employee") Employee employee,BindingResult result){
+             @Valid @ModelAttribute("employee")  Employee employee,BindingResult result){
         //mMap.addAttribute("edetails","Name:"+ename+"Adress:"+eaddress);
         /*Employee employee=new Employee();
         employee.setEname(ename);
