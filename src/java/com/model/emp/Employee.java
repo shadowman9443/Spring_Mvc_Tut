@@ -6,6 +6,7 @@
 package com.model.emp;
 
 
+import com.spring.Phone;
 import java.util.Date;
 import java.util.List;
 import javax.validation.constraints.Size;
@@ -19,8 +20,8 @@ public class Employee {
     @Size(min = 3, max = 10)
     private String ename;
     private String eaddress;
-
-    private Long emplMobile;
+    @Phone
+    private String emplMobile;
     private Date empDob;
     private List<String> skillList;
     private Department department;
@@ -49,13 +50,15 @@ public class Employee {
         this.empDob = empDob;
     }
 
-    public Long getEmplMobile() {
+    public String getEmplMobile() {
         return emplMobile;
     }
 
-    public void setEmplMobile(Long emplMobile) {
+    public void setEmplMobile(String emplMobile) {
         this.emplMobile = emplMobile;
     }
+
+  
 
     public String getEname() {
         return ename;
